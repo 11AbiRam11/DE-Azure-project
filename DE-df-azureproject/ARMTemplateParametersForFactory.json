@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DE-df-azureproject"
+		},
+		"AzureDataLakeStorage1_linkservice_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_linkservice_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_linkservice_properties_typeProperties_url": {
+			"value": "https://0storageaccount.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_linkservice_properties_typeProperties_server": {
+			"value": "de-sqlserver-azureproject.database.windows.net"
+		},
+		"AzureSqlDatabase1_linkservice_properties_typeProperties_database": {
+			"value": "de-sqldb-azureproject"
+		},
+		"AzureSqlDatabase1_linkservice_properties_typeProperties_userName": {
+			"value": "abhi-admin"
+		}
+	}
+}
