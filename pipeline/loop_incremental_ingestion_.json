@@ -9,9 +9,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "[\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimUser\",\n    \"cdc_col\" : \"updated_at\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimTrack\",\n    \"cdc_col\" : \"updated_at\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimDate\",\n    \"cdc_col\" : \"date\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimArtist\",\n    \"cdc_col\" : \"updated_at\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"FactStream\",\n    \"cdc_col\" : \"stream_timestamp\",\n    \"from_date\" : \"\"\n  }\n]",
+						"value": "@pipeline().parameters.loop_input",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "last_cdc",
@@ -211,7 +212,10 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze",
-													"folder": "cdc",
+													"folder": {
+														"value": "@{item().table}_cdc",
+														"type": "Expression"
+													},
 													"file": "empty.json"
 												}
 											}
