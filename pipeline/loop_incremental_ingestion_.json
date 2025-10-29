@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "[\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimUser\",\n    \"cdc_col\" : \"updated_at\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimTrack\",\n    \"cdc_col\" : \"updated_at\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimDate\",\n    \"cdc_col\" : \"date\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"DimArtist\",\n    \"cdc_col\" : \"updated_at\",\n    \"from_date\" : \"\"\n  },\n  {\n    \"schema\" : \"dbo\",\n    \"table\" : \"FactStream\",\n    \"cdc_col\" : \"stream_timestamp\",\n    \"from_date\" : \"\"\n  }\n]",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "last_cdc",
@@ -102,11 +106,11 @@
 												"parameters": {
 													"container": "bronze",
 													"folder": {
-														"value": "@pipeline().parameters.table",
+														"value": "@item().table",
 														"type": "Expression"
 													},
 													"file": {
-														"value": "@concat(pipeline().parameters.table, '_', variables('current'))",
+														"value": "@concat(item().table, '_', variables('current'))",
 														"type": "Expression"
 													}
 												}
