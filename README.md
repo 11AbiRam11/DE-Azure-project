@@ -123,7 +123,7 @@ parameters = [
 This approach enhances **flexibility, scalability, and automation** in the ETL process.
 ```
 And the Templated query looks like this 
-```
+```python
 query_text = """
        SELECT 
             {% for param in parameters %}
@@ -149,7 +149,7 @@ query_text = """
 """
 ```
 Final Query looks like, without any effort or creating sql query manually again and again
-```
+```python
   SELECT
           factstream.stream_id, factstream.listen_duration,
           dimuser.user_id, dimuser.user_name,            
