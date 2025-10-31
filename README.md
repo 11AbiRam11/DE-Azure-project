@@ -123,7 +123,7 @@ parameters = [
 This approach enhances **flexibility, scalability, and automation** in the ETL process.
 ```
 And the Templated query looks like this 
-```python
+```sql
 query_text = """
        SELECT 
             {% for param in parameters %}
