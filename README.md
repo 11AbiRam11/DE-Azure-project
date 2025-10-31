@@ -19,5 +19,6 @@ This project is done in azure cloud platform, majorily used tools are,
    
 ## Azure Data Factory
 ### Incremental_ingestion pipeline
+![Alt Text](https://github.com/11AbiRam11/DE-Azure-project/blob/main/assets/incremental_ingestion.png)
 
 Here I've created simple incremental_ingestion Pipeline and Loop_increamental_ingestion pipeline, where the incremental_ingestion pipeline fetches the data (For all Tables) from sql database and it stores in bronze layer, but it has to be run for all tables so Loop_incremen
