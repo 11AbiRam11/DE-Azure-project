@@ -192,26 +192,26 @@ A dedicated **Databricks pipeline** has been created to handle **Slowly Changing
 The deployment process is structured as follows:
 
 1. **Pipeline Creation**  
-   - Develop Databricks notebooks and utility modules to implement SCD logic.  
-   - Handle insertions, updates, and historical tracking in dimension tables.
+  - Develop Databricks notebooks and utility modules to implement SCD logic.  
+  - Handle insertions, updates, and historical tracking in dimension tables.
 
 2. **Bundling for Deployment**  
-   - All notebooks, configuration files, and environment dependencies are **bundled together** using Databricks’ bundle mechanism.  
-   - This ensures **consistent and reproducible deployments** across environments.
+  - All notebooks, configuration files, and environment dependencies are **bundled together** using Databricks’ bundle mechanism.  
+  - This ensures **consistent and reproducible deployments** across environments.
 
-3. **Deployment Commands**  
-   - **Development Environment:**  
+3. **Deployment Commands**
+  - **Development Environment:**  
      ```bash
      databricks bundle deploy --target dev
      ```  
-   - **Production Environment:**  
+  - **Production Environment:**  
      ```bash
      databricks bundle deploy --target production
      ```  
 
 4. **Key Benefits**  
-   - Simplifies **multi-environment deployments** (Dev, QA, Production).  
-   - Ensures **version control and environment consistency**.  
-   - Facilitates **automation** and reduces manual intervention during deployment.
+  - Simplifies **multi-environment deployments** (Dev, QA, Production).  
+  - Ensures **version control and environment consistency**.  
+  - Facilitates **automation** and reduces manual intervention during deployment.
 
 
