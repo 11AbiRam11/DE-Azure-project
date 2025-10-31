@@ -167,40 +167,26 @@ Final Query looks like, without any effort or creating sql query manually again 
 ```
 ----
 
-### Gold layer (final layer)
+### Gold Layer (Final Layer)
 
-Here we access the silver layers data which is in delta form, but while reading the data we used spark.readStream() and for writing spark.writeStream(), this fucntion will load only new records rather than reading or writing all record, it is a real_time fetching and writing functions in Pyspark.
-Here we stage the data from silver layer and then we create an Slowly chaging dimension table which will be created using,  
+The **Gold Layer** represents the **final, analytics-ready data** in the pipeline.  
+It is built on top of the **Silver Layer**, which contains **cleaned and transformed data** stored in **Delta format**.
 
-```
-import dlt 
-expectations = {
-    "rule_1": "user_id IS NOT NULL"
-}
+#### Real-Time Data Processing
+- The pipeline uses **PySpark Structured Streaming** functions:  
+  - `spark.readStream()` to **ingest only new records** from the Silver Layer.  
+  - `spark.writeStream()` to **write incremental updates** to the Gold Layer.  
+- This approach ensures **real-time data ingestion and processing**, avoiding the overhead of reading/writing the entire dataset repeatedly.
 
-@dlt.table
-@dlt.expect_all_or_drop(expectations)
-def dimuser_stg():
-    df = spark.readStream.table("spotify_catalog.silver.dimuser")
-    return df
+#### Slowly Changing Dimension (SCD) Implementation
+- After staging the Silver Layer data, **Slowly Changing Dimension (SCD) tables** are created in the Gold Layer to track historical changes in key dimension tables.  
+- This enables **accurate analytics and reporting**, preserving the history of changes while keeping the current dataset up-to-date.
 
+By leveraging **Delta Lake** and **structured streaming**, the Gold Layer ensures:  
+- Efficient **incremental processing**  
+- **Historical tracking** of changes  
+- **Analytics-ready data** for downstream consumption (e.g., BI dashboards, reporting tools)
 
-dlt.create_streaming_table(
-    name="dimuser",
-    expect_all_or_drop=expectations
-)
-
-dlt.create_auto_cdc_flow(
-    target = "dimuser",
-    source = "dimuser_stg",
-    keys = ['user_id'],
-    sequence_by = "updated_at",
-    stored_as_scd_type = 2,
-    track_history_except_column_list = None,
-    name = None,
-    once = False
-)
-```
 A dedicated **Databricks pipeline** has been created to handle **Slowly Changing Dimensions (SCD)**, ensuring that historical changes in dimension tables are properly tracked and managed.  
 
 The deployment process is structured as follows:
