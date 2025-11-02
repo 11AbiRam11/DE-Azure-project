@@ -11,10 +11,11 @@ This project is done in azure cloud platform, majorily used tools are,
 
 #### Major feature are
 1) Backfilling (If we provide from_date in loop_input file for each table it will back fill from that date)
-2) Can process multiple Dimension (Tables)
-3) Github intgration (Can directly push the file into git repo within clicks with all changes (commits)
-4) Deletes empty files automatically after ingestion process
-5) Integration of for_each activities for automating for each individual table
+2) Metadata driven pipelines
+3) Can process multiple Dimension (Tables)
+4) Github intgration (Can directly push the file into git repo within clicks with all changes (commits)
+5) Deletes empty files automatically after ingestion process
+6) Integration of for_each activities for automating for each individual table
 
    
 ## Azure Data Factory
