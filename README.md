@@ -173,6 +173,25 @@ Final Query looks like, without any effort or creating sql query manually again 
 The **Gold Layer** represents the **final, analytics-ready data** in the pipeline.  
 It is built on top of the **Silver Layer**, which contains **cleaned and transformed data** stored in **Delta format**.
 
+### Delta Live Tables (DLT) Pipeline Visualization
+
+
+
+The image below represents the **Delta Live Tables (DLT) pipeline** built in **Databricks** for real-time data transformation and lineage tracking.
+
+Each block in the visualization corresponds to a **streaming table** that is part of the end-to-end data pipeline — starting from **staging tables** (e.g., `dimdate_stg`, `dimtrack_stg`, `dimuser_stg`, `factstream_stg`) and progressing to **final dimension and fact tables** (e.g., `dimdate`, `dimtrack`, `dimuser`, `factstream`).
+
+#### Key Highlights
+- **Streaming Tables**: All tables are defined as **streaming datasets**, ensuring continuous data ingestion and transformation.
+- **Data Lineage**: The visual connections between nodes represent data dependencies — for instance, `dimdate_stg → dimdate` shows that the final dimension table is derived from its corresponding staging layer.
+- **Automated Execution**: Each table is updated automatically based on changes in its upstream dependencies.
+- **Status Indicators**: The colored icons below each table display health metrics such as execution time, event latency, and data quality status.
+- **Efficiency**: This architecture supports both **real-time updates** and **incremental processing**, reducing compute overhead while maintaining data consistency.
+
+This DLT pipeline ensures a **reliable, traceable, and automated transformation flow** from the Silver layer to the Gold layer — forming the backbone of the data transformation process in Databricks.
+
+
+
 #### Real-Time Data Processing
 - The pipeline uses **PySpark Structured Streaming** functions:  
   - `spark.readStream()` to **ingest only new records** from the Silver Layer.  
