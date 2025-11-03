@@ -175,7 +175,7 @@ It is built on top of the **Silver Layer**, which contains **cleaned and transfo
 
 ### Delta Live Tables (DLT) Pipeline Visualization
 
-
+![Alt Text](https://github.com/11AbiRam11/DE-Azure-project/blob/main/assets/Screenshot%202025-10-31%20145133.png)
 
 The image below represents the **Delta Live Tables (DLT) pipeline** built in **Databricks** for real-time data transformation and lineage tracking.
 
